@@ -2,17 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+}
+
 @layer components {
   .nav-a {
     @apply relative text-[0.9rem] font-[500] mr-[3rem]
   }
+
+  .btn-home {
+    @apply inline-flex shadow-custom justify-center items-center w-[40px] h-[40px] bg-transparent border-2 border-solid border-tertiary rounded-full text-[20px] mt-[30px] mr-[15px] mb-[30px] ml-[0] hover:bg-tertiary transition duration-[0.5s]
+  }
 }
 
 @layer utilities {
-  .shadow-logo {
+  .shadow-custom {
     box-shadow: 6px 6px 12px #bababa, -6px -6px 12px #ffffff;
   }
   .inner-shadow {
     box-shadow: inset 6px 6px 12px #bababa, inset -6px -6px 12px #ffffff;
+  }
+  .btn-bg {
+    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
   }
 }
