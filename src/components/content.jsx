@@ -84,6 +84,7 @@ export default function Content() {
 
   return (
     <>
+      {/* Home */}
       <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
         <div className="flex items-center justify-center mt-[3rem] px-[10%] gap-3">
           <div className="m-auto">
@@ -115,6 +116,8 @@ export default function Content() {
           </div>
         </div>
       </section>
+
+      {/* About me */}
       <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
         <div className="flex items-center justify-center mt-[3rem] px-[10%] gap-9">
           <div data-aos="flip-right" data-aos-duration="1000" className="m-auto">
@@ -213,6 +216,15 @@ export default function Content() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
+        <div className="text-center mb-[6rem]">
+          <h2 className="text-[2.5rem] font-bold mt-[50px] inline-block">
+            Our <span className="font-[900] text-tertiary">Services</span>
+          </h2>
         </div>
       </section>
     </>

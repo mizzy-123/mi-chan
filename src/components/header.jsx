@@ -1,8 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
+  const [navItem, setNavItem] = useState([
+    {
+      name: "Home",
+      link: "#Home",
+      textColor: "text-tertiary",
+      scale: "text-dark",
+    },
+  ]);
   const refNav = useRef(null);
   useEffect(() => {
     if (window instanceof Window) {
@@ -35,19 +43,34 @@ export default function Header() {
         MI<span className="text-tertiary">DEV</span>
       </a>
       <nav className="flex justify-center w-full">
-        <a href="" className="nav-a">
+        <a
+          href=""
+          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
+        >
           Home
         </a>
-        <a href="" className="nav-a">
+        <a
+          href=""
+          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
+        >
           About
         </a>
-        <a href="" className="nav-a">
+        <a
+          href=""
+          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
+        >
           Services
         </a>
-        <a href="" className="nav-a">
+        <a
+          href=""
+          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
+        >
           Portfolio
         </a>
-        <a href="" className="nav-a">
+        <a
+          href=""
+          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
+        >
           testimonial
         </a>
       </nav>
