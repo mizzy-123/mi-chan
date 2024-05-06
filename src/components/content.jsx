@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import "boxicons";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AppContext } from "@/app/page";
 
 export default function Content() {
+  const { secRefs } = useContext(AppContext);
   const el = useRef(null);
   const [icon, setIcon] = useState([
     {
@@ -85,7 +87,7 @@ export default function Content() {
   return (
     <>
       {/* Home */}
-      <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
+      <section ref={(el) => (secRefs.current[0] = el)} id="Home" className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
         <div className="flex items-center justify-center mt-[3rem] px-[10%] gap-3">
           <div className="m-auto">
             <h3 className="text-[1.5rem] leading-[1.2] font-bold">Hello, It{`'`}s Me</h3>
@@ -118,7 +120,7 @@ export default function Content() {
       </section>
 
       {/* About me */}
-      <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
+      <section ref={(el) => (secRefs.current[1] = el)} id="About" className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
         <div className="flex items-center justify-center mt-[3rem] px-[10%] gap-9">
           <div data-aos="flip-right" data-aos-duration="1000" className="m-auto">
             <img className="max-w-[35rem] h-auto shadow-custom rounded-t-full rounded-br-full w-[30rem] block object-cover" src="/images/about.png" alt="" />
@@ -220,7 +222,7 @@ export default function Content() {
       </section>
 
       {/* Services */}
-      <section className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
+      <section ref={(el) => (secRefs.current[2] = el)} id="Services" className="min-h-screen px-[0] pt-[5rem] pb-[3rem] w-full">
         <div className="text-center mb-[6rem]">
           <h2 className="text-[2.5rem] font-bold mt-[50px] inline-block">
             Our <span className="font-[900] text-tertiary">Services</span>

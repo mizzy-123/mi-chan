@@ -1,21 +1,56 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { AppContext } from "@/app/page";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export default function Header() {
+  const { secRefs } = useContext(AppContext);
   const [navItem, setNavItem] = useState([
     {
       name: "Home",
       link: "#Home",
-      textColor: "text-tertiary",
-      scale: "text-dark",
+    },
+    {
+      name: "About",
+      link: "#About",
+    },
+    {
+      name: "Services",
+      link: "#Services",
+    },
+    {
+      name: "Portfolio",
+      link: "#Portfolio",
+    },
+    {
+      name: "Testimonial",
+      link: "#Testimonial",
     },
   ]);
+
   const refNav = useRef(null);
+  const navLinks = useRef([]);
+
   useEffect(() => {
     if (window instanceof Window) {
       const handleScroll = () => {
         const scrollTop = window.scrollY;
+
+        // Scroll active navbar
+        secRefs.current.forEach((ref) => {
+          let offset = ref.offsetTop - 150;
+          let height = ref.offsetHeight;
+          let id = ref.getAttribute("id");
+
+          if (scrollTop >= offset && scrollTop < offset + height) {
+            navLinks.current.forEach((links) => {
+              links.classList.remove("after:scale-x-50", "text-tertiary");
+              document.querySelector("header nav a[href*=" + id + "]").classList.add("after:scale-x-50", "text-tertiary");
+            });
+          }
+        });
+
+        // Membuat navbar menjadi sticky disaat di scroll
         if (scrollTop > 80) {
           refNav.current.classList.add("bg-background", "shadow-nav");
           refNav.current.classList.remove("bg-transparent");
@@ -35,7 +70,7 @@ export default function Header() {
         }
       };
     }
-  }, []);
+  }, [secRefs]);
 
   return (
     <header ref={refNav} className="fixed top-0 left-0 w-full py-[1.5rem] px-[10%] bg-transparent flex items-center z-[100] transition duration-[0.5s] justify-items-stretch">
@@ -43,36 +78,16 @@ export default function Header() {
         MI<span className="text-tertiary">DEV</span>
       </a>
       <nav className="flex justify-center w-full">
-        <a
-          href=""
-          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
-        >
-          Home
-        </a>
-        <a
-          href=""
-          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
-        >
-          About
-        </a>
-        <a
-          href=""
-          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
-        >
-          Services
-        </a>
-        <a
-          href=""
-          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
-        >
-          Portfolio
-        </a>
-        <a
-          href=""
-          className="nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear"
-        >
-          testimonial
-        </a>
+        {navItem.map((v, i) => (
+          <a
+            key={i}
+            href={v.link}
+            ref={(e) => (navLinks.current[i] = e)}
+            className={`nav-a after:block after:pb-[0.5rem] after:border-b-[0.2rem] after:border-solid after:border-b-tertiary after:scale-x-0 hover:after:scale-x-50 hover:text-tertiary after:transition-transform after:duration-75 after:ease-linear`}
+          >
+            {v.name}
+          </a>
+        ))}
       </nav>
     </header>
   );
