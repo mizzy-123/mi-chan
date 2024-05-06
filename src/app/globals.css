@@ -31,4 +31,7 @@
   .btn-bg {
     background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
   }
+  .shadow-nav {
+    box-shadow: 6px 6px 12px #bababa, -6px -6px 12px #ffffff;
+  }
 }
