@@ -12,6 +12,22 @@ module.exports = {
         dark: "#212121",
         tertiary: "#fa87df",
       },
+      gridTemplateColumns: {
+        "1fr-3fr": "1fr 3fr",
+      },
+      animation: {
+        scale: "scale-up 0.3s linear",
+      },
+      keyframes: {
+        "scale-up": {
+          "0%": {
+            transform: "scale(0)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+      },
     },
   },
   plugins: [],

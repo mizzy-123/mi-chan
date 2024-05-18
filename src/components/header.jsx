@@ -15,16 +15,12 @@ export default function Header() {
       link: "#About",
     },
     {
-      name: "Services",
-      link: "#Services",
-    },
-    {
       name: "Portfolio",
       link: "#Portfolio",
     },
     {
-      name: "Testimonial",
-      link: "#Testimonial",
+      name: "Contact",
+      link: "#Contact",
     },
   ]);
 

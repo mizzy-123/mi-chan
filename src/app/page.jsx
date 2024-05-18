@@ -1,6 +1,7 @@
 "use client";
 
 import Content from "@/components/content";
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import Image from "next/image";
 import { createContext, useRef } from "react";
@@ -18,6 +19,7 @@ export default function Home() {
       >
         <Header />
         <Content />
+        <Footer />
       </AppContext.Provider>
     </main>
   );
